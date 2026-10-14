@@ -1,6 +1,6 @@
 # Aula 6 — Capstone: o agent gate
 
-**Onde roda:** GitHub Actions + Ollama (gratuito) + Azure Web Apps (deploy). **Tempo:** laboratório de 90 min.
+**Onde roda:** GitHub Actions + Ollama (gratuito) + Azure Web Apps (deploy). **Tempo:** o laboratório ocupa a noite: ~35 min de desenho da esteira antes do intervalo (nos slides) e ~50 min de código depois dele (este roteiro).
 
 Missão do enunciado: *"configurar o pipeline que testa o comportamento dos agentes automaticamente
 antes de cada atualização no site da Quantum"*. Aqui o agente é uma versão mínima (roteador + RAG +
@@ -67,7 +67,7 @@ maior (`LLM_JUIZ_BASE_URL`, `LLM_JUIZ_MODELO`, secret `LLM_JUIZ_API_KEY`) e `JUI
 
 Com as credenciais do Learner Lab nos secrets (`roteiros/setup-aws-academy.md`, passo 3), faça merge na
 `main` (ou *Actions → Aula 6 · Deploy do agente (AWS Lambda) → Run workflow*): o workflow chama o gate e só
-então publica o agente numa função **Lambda** com URL pública, que **continua no ar entre as sessões** do lab.
+então publica o agente numa função **Lambda** com URL pública, que **só responde com o lab aberto** (a validar com a coordenação se o capstone precisa ficar acessível sem o lab).
 
 ```bash
 curl https://<sua-function-url>/

@@ -18,9 +18,35 @@ der; stack 100% gratuita quando nenhuma das duas se encaixar.**
 | 5 · MLOps e LLMOps | MLflow: Model Registry com aliases e Prompt Registry | **AWS Academy** (EC2 + S3) ou **gratuito** (MLflow local) | [aula-05](roteiros/aula-05.md) |
 | 6 · Capstone | **Agent gate** sobre o golden dataset + deploy do agente | GitHub Actions + Ollama (gratuito) no gate; deploy no **AWS Academy** (Lambda), com o Azure Web Apps como alternativa | [aula-06](roteiros/aula-06.md) |
 
-O capstone também fica no AWS Academy: as credenciais expiram a cada sessão de 4h, mas os recursos
-serverless (Lambda, ECR, S3) **continuam no ar** entre as sessões (só as EC2 são paradas no "End Lab").
+O capstone também fica no AWS Academy: as credenciais expiram a cada sessão de 4h e, com o lab encerrado,
+a URL da função Lambda responde 502 e a EC2 troca de IP: ligue o lab (*Start Lab*) e refaça o deploy se precisar
+(1 a 2 min). *A validar:* se o capstone precisa ficar acessível sem o lab (teste de 12/10/2026).
 Veja `roteiros/setup-aws-academy.md`, passo 4.
+
+## Atualizando a sua cópia
+
+O *Use this template* faz uma **cópia independente** (não é *fork*): ela **não** recebe sozinha o que o professor publica depois.
+Passo a passo completo, com os casos de `main` protegida e de `push` recusado: [`roteiros/atualizar-sua-copia.md`](roteiros/atualizar-sua-copia.md).
+
+**O que mudou no template desde a Aula 1, e quem precisa atualizar:**
+
+| Data | O que mudou | Precisa atualizar? |
+| --- | --- | --- |
+| 10/10/2026 | `roteiros/aula-02.md` (demo de 5 min, salas do Teams, "quando travar") e `roteiros/atualizar-sua-copia.md` | Não: leia direto aqui no GitHub |
+| 12/10/2026 | **`.github/workflows/canary-classificador.yml`: o canary promovia a versão ruim** (corrigido); avisos sobre o fim do lab nos roteiros | **Sim, antes da Aula 4** |
+
+**Aula 2: não precisa atualizar** (classificador, testes e workflows da Aula 2 não mudaram). **Antes da Aula 4**, no terminal do Codespace, dentro da sua cópia
+(só vale se você não editou esses arquivos):
+
+```bash
+git remote add template https://github.com/guilherme-argentino/aie-devops-labs.git   # só na primeira vez
+git fetch template
+git checkout template/main -- .github/workflows/canary-classificador.yml roteiros
+git add -A && git commit -m "Atualiza do template" && git push
+```
+
+Se a sua `main` está protegida, faça numa branch e abra um Pull Request. Se o `push` for recusado por causa do workflow, edite o arquivo pelo
+navegador (detalhes no roteiro). **Não** traga a pasta `.github` inteira: ela sobrescreve o seu `CODEOWNERS` da Aula 1.
 
 ## Antes da primeira aula
 
